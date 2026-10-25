@@ -6,7 +6,7 @@
 
 ## 使い方
 
-1. [https://yno9.github.io/trahl/] を開く（または `index.html` をブラウザで直接開く）
+1. [https://yno9.github.io/trahl/](https://yno9.github.io/trahl/) を開く（または `index.html` をブラウザで直接開く）
 2. テキストを貼り付けて「ハイライト」を押す
 3. 黄色くハイライトされた字が繁体字候補です
 
