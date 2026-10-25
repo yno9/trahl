@@ -6,159 +6,75 @@
   <title>繁体字ハイライター</title>
   <style>
     :root {
-      --bg: #fafafa;
-      --card: #fff;
-      --border: #e0e0e0;
-      --text: #222;
-      --muted: #666;
-      --accent: #c62828;
-      --highlight: #fff59d;
-      --highlight-border: #fbc02d;
+      --bg: #fafafa; --card: #fff; --border: #e0e0e0; --text: #222;
+      --muted: #666; --accent: #c62828; --highlight: #fff59d; --highlight-border: #fbc02d;
     }
     * { box-sizing: border-box; }
     body {
       font-family: "Hiragino Sans", "Noto Sans CJK JP", "Yu Gothic", "Meiryo", sans-serif;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1.5rem;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      max-width: 960px; margin: 0 auto; padding: 1.5rem;
+      background: var(--bg); color: var(--text); line-height: 1.6;
     }
-    h1 {
-      font-size: 1.5rem;
-      margin: 0 0 0.25rem;
-      font-weight: 600;
-    }
-    .subtitle {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 1.25rem;
-    }
-    label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-    }
+    h1 { font-size: 1.5rem; margin: 0 0 0.25rem; font-weight: 600; }
+    .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.25rem; }
+    label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem; }
     textarea {
-      width: 100%;
-      height: 180px;
-      padding: 0.75rem;
-      font-size: 1rem;
-      font-family: inherit;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      resize: vertical;
-      background: var(--card);
+      width: 100%; height: 180px; padding: 0.75rem; font-size: 1rem;
+      font-family: inherit; border: 1px solid var(--border); border-radius: 6px;
+      resize: vertical; background: var(--card);
     }
-    textarea:focus {
-      outline: 2px solid #90caf9;
-      border-color: #42a5f5;
-    }
-    .actions {
-      display: flex;
-      gap: 0.5rem;
-      margin: 0.75rem 0 1rem;
-      flex-wrap: wrap;
-    }
+    textarea:focus { outline: 2px solid #90caf9; border-color: #42a5f5; }
+    .actions { display: flex; gap: 0.5rem; margin: 0.75rem 0 1rem; flex-wrap: wrap; }
     button {
-      padding: 0.5rem 1.1rem;
-      font-size: 0.95rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-family: inherit;
+      padding: 0.5rem 1.1rem; font-size: 0.95rem; border: none;
+      border-radius: 6px; cursor: pointer; font-family: inherit;
     }
-    button.primary {
-      background: #1565c0;
-      color: #fff;
-    }
+    button.primary { background: #1565c0; color: #fff; }
     button.primary:hover { background: #0d47a1; }
-    button.secondary {
-      background: #eee;
-      color: #333;
-    }
+    button.secondary { background: #eee; color: #333; }
     button.secondary:hover { background: #e0e0e0; }
-    .stats {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-      min-height: 1.4em;
-    }
+    .stats { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.75rem; min-height: 1.4em; }
     .stats strong { color: var(--accent); }
     #result {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem;
-      min-height: 120px;
-      white-space: pre-wrap;
-      word-break: break-all;
-      font-size: 1.05rem;
-      line-height: 1.85;
+      background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+      padding: 1rem; min-height: 120px; white-space: pre-wrap; word-break: break-all;
+      font-size: 1.05rem; line-height: 1.85;
     }
     .trad {
-      background: var(--highlight);
-      color: var(--accent);
-      font-weight: 700;
-      padding: 0 3px;
-      border-radius: 3px;
-      border-bottom: 2px solid var(--highlight-border);
+      background: var(--highlight); color: var(--accent); font-weight: 700;
+      padding: 0 3px; border-radius: 3px; border-bottom: 2px solid var(--highlight-border);
     }
     .found-list {
-      margin-top: 1.25rem;
-      padding: 0.9rem 1rem;
-      background: #fff8e1;
-      border: 1px solid #ffe082;
-      border-radius: 6px;
-      display: none;
+      margin-top: 1.25rem; padding: 0.9rem 1rem; background: #fff8e1;
+      border: 1px solid #ffe082; border-radius: 6px; display: none;
     }
-    .found-list h2 {
-      font-size: 0.95rem;
-      margin: 0 0 0.5rem;
-      font-weight: 600;
-    }
-    .found-chars {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
+    .found-list h2 { font-size: 0.95rem; margin: 0 0 0.5rem; font-weight: 600; }
+    .found-chars { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .found-chars span {
-      display: inline-block;
-      background: var(--highlight);
-      color: var(--accent);
-      font-weight: 700;
-      padding: 0.15rem 0.45rem;
-      border-radius: 4px;
-      font-size: 1.1rem;
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      background: var(--highlight); color: var(--accent); font-weight: 700;
+      padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 1.05rem;
       border: 1px solid var(--highlight-border);
     }
+    .found-chars .jp { font-weight: 500; color: #555; font-size: 0.85rem; }
     .meta {
-      margin-top: 2rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.8rem;
-      color: var(--muted);
+      margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border);
+      font-size: 0.8rem; color: var(--muted);
     }
     .meta a { color: #1565c0; }
-    .example {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-top: 0.35rem;
-    }
+    .example { font-size: 0.85rem; color: var(--muted); margin-top: 0.35rem; }
   </style>
 </head>
 <body>
   <h1>繁体字ハイライター</h1>
   <p class="subtitle">
-    日本語テキスト中に残った中国語繁体字を検出してハイライトします。<br>
-    辞書: OpenCC TSCharacters / STCharacters（約4,180字）
+    日本語テキスト中に混入した「日本語と形の違う繁体字・旧字体」だけを検出します。<br>
+    辞書: OpenCC JPShinjitaiCharacters（約410字）— 新字体と異なる旧字・繁体のみ
   </p>
 
   <label for="input">テキストを貼り付け</label>
-  <textarea id="input" placeholder="ここに文章を貼り付けてください…&#10;&#10;例: 北村薰の小說的方法、櫻庭一樹、這是一個測試。"></textarea>
-  <p class="example">例: 北村薰 → 薰　／　櫻庭一樹 → 櫻　／　小說的方法 → 說</p>
+  <textarea id="input" placeholder="ここに文章を貼り付けてください…"></textarea>
+  <p class="example">例: 北村薰 → 薰　／　櫻庭一樹 → 櫻　／　小說的方法 → 說　（書・際・館などはハイライトしません）</p>
 
   <div class="actions">
     <button class="primary" onclick="highlight()">ハイライト</button>
@@ -170,7 +86,7 @@
   <div id="result">（結果がここに表示されます）</div>
 
   <div class="found-list" id="foundList">
-    <h2>検出された繁体字候補</h2>
+    <h2>検出された字（繁体／旧字 → 日本語の形）</h2>
     <div class="found-chars" id="foundChars"></div>
   </div>
 
@@ -178,13 +94,20 @@
     <p>
       辞書出典:
       <a href="https://github.com/BYVoid/OpenCC" target="_blank" rel="noopener">OpenCC</a>
-      （Apache-2.0）の TSCharacters.txt / STCharacters.txt から抽出。<br>
-      日本語でも使われる字（例: 國・學 など）も含まれるため、文脈で判断してください。
+      の <code>JPShinjitaiCharacters.txt</code>（Apache-2.0）。<br>
+      常用漢字の新字体と字形が異なる旧字体・繁体字だけを対象にしているため、
+      書・際・館・作・小・影・文・樹・電・題 など日本語でも同じ形の字は検出しません。
     </p>
   </div>
 
-  <script src="trad_chars.js"></script>
   <script>
+// Traditional/kyujitai forms that DIFFER from modern Japanese (shinjitai)
+// Source: OpenCC JPShinjitaiCharacters.txt (Apache-2.0) — https://github.com/BYVoid/OpenCC
+// Count: 410
+const TRAD_STR = "乘亂亙亞佛來俠俱倂值假傳僞價儉兒兔內兩冰凛剎剩劍劑勞勳勵勸勻區卷卻卽參吳咒啞單噓嚙嚴囑圈國圍圓圖團堯填增墮壓壘壞壤壯壹壽奧奬妝姊姬孃學寢實寫寬寶將專對屆屬峯峽嶽巖巢帶廁廢廣廳彈彌彎彥徑從徵德恆悅惠惡惱愼慘應懷戀戰戲戶戾拂拔拜挾插揭搔搖搜摑擇擊擔據擧擴攝攪收效敍敕敘數斷晄晉晚晝暨曆曉曾會枡查條棧棱榆榮槇槪樂樓樞樣橫檜檢櫻權歐歡步歲歷歸殘殼毆每氣污沒涉淚淨淸淺渴溪溫溼滯滿潑潛澀澁澤濕濟濤濱濾瀧瀨灣焰燈燒營爐爭爲牀犧狀狹獎獨獵獸獻瓣甁產畫當疊痹瘦癡發皋盜盡眞硏碎礪祕祿禦禪禮禰禱稅稱稻穎穗穩穰竈竊竝粹糉絕絲經綠緖緣縣縱總繡繩繪繫繼續纔纖缺罐羣聯聰聲聽肅脣脫腦腳膽臟臺與舉舊舍艷荔莊莖菸萊萠萬蔣蔥薰藏藝藥蘆處虛號螢蟬蟲蠟蠶蠻衞裝裡襃覺覽觀觸說謠證譯譽讀變讓豐豫貓貳賣賴贊贗踐輕輛轉辨辭辯遙遞遲邊郞鄉鄕鄰醉醫醬醱釀釋銳鋪錄錢鍊鎭鐵鑄鑛閱關陷隨險隱雙雜雞霸靈靜顏顯飜餘餠騷驅驗驛髓體髮鬥鬭鱉鷄鷗鹼鹽麥麪麴麵黃黑默點黨齊齋齒齡龍龜";
+const TRADITIONAL_CHARS = new Set(TRAD_STR);
+const JP_EQUIV = {'乘':'乗', '亂':'乱', '亙':'亘', '亞':'亜', '佛':'仏', '來':'来', '俠':'侠', '俱':'倶', '倂':'併', '值':'値', '假':'仮', '傳':'伝', '僞':'偽', '價':'価', '儉':'倹', '兒':'児', '兔':'兎', '內':'内', '兩':'両', '冰':'氷', '凛':'凜', '剎':'刹', '剩':'剰', '劍':'剣', '劑':'剤', '勞':'労', '勳':'勲', '勵':'励', '勸':'勧', '勻':'匀', '區':'区', '卷':'巻', '卻':'却', '卽':'即', '參':'参', '吳':'呉', '咒':'呪', '啞':'唖', '單':'単', '噓':'嘘', '嚙':'噛', '嚴':'厳', '囑':'嘱', '圈':'圏', '國':'国', '圍':'囲', '圓':'円', '圖':'図', '團':'団', '堯':'尭', '填':'塡', '增':'増', '墮':'堕', '壓':'圧', '壘':'塁', '壞':'壊', '壤':'壌', '壯':'壮', '壹':'壱', '壽':'寿', '奧':'奥', '奬':'奨', '妝':'粧', '姊':'姉', '姬':'姫', '孃':'嬢', '學':'学', '寢':'寝', '實':'実', '寫':'写', '寬':'寛', '寶':'宝', '將':'将', '專':'専', '對':'対', '屆':'届', '屬':'属', '峯':'峰', '峽':'峡', '嶽':'岳', '巖':'巌', '巢':'巣', '帶':'帯', '廁':'厠', '廢':'廃', '廣':'広', '廳':'庁', '彈':'弾', '彌':'弥', '彎':'弯', '彥':'彦', '徑':'径', '從':'従', '徵':'徴', '德':'徳', '恆':'恒', '悅':'悦', '惠':'恵', '惡':'悪', '惱':'悩', '愼':'慎', '慘':'惨', '應':'応', '懷':'懐', '戀':'恋', '戰':'戦', '戲':'戯', '戶':'戸', '戾':'戻', '拂':'払', '拔':'抜', '拜':'拝', '挾':'挟', '插':'挿', '揭':'掲', '搔':'掻', '搖':'揺', '搜':'捜', '摑':'掴', '擇':'択', '擊':'撃', '擔':'担', '據':'拠', '擧':'挙', '擴':'拡', '攝':'摂', '攪':'撹', '收':'収', '效':'効', '敍':'叙', '敕':'勅', '敘':'叙', '數':'数', '斷':'断', '晄':'晃', '晉':'晋', '晚':'晩', '晝':'昼', '暨':'曁', '曆':'暦', '曉':'暁', '曾':'曽', '會':'会', '枡':'桝', '查':'査', '條':'条', '棧':'桟', '棱':'稜', '榆':'楡', '榮':'栄', '槇':'槙', '槪':'概', '樂':'楽', '樓':'楼', '樞':'枢', '樣':'様', '橫':'横', '檜':'桧', '檢':'検', '櫻':'桜', '權':'権', '歐':'欧', '歡':'歓', '步':'歩', '歲':'歳', '歷':'歴', '歸':'帰', '殘':'残', '殼':'殻', '毆':'殴', '每':'毎', '氣':'気', '污':'汚', '沒':'没', '涉':'渉', '淚':'涙', '淨':'浄', '淸':'清', '淺':'浅', '渴':'渇', '溪':'渓', '溫':'温', '溼':'湿', '滯':'滞', '滿':'満', '潑':'溌', '潛':'潜', '澀':'渋', '澁':'渋', '澤':'沢', '濕':'湿', '濟':'済', '濤':'涛', '濱':'浜', '濾':'沪', '瀧':'滝', '瀨':'瀬', '灣':'湾', '焰':'焔', '燈':'灯', '燒':'焼', '營':'営', '爐':'炉', '爭':'争', '爲':'為', '牀':'床', '犧':'犠', '狀':'状', '狹':'狭', '獎':'奨', '獨':'独', '獵':'猟', '獸':'獣', '獻':'献', '瓣':'弁', '甁':'瓶', '產':'産', '畫':'畵', '當':'当', '疊':'畳', '痹':'痺', '瘦':'痩', '癡':'痴', '發':'発', '皋':'皐', '盜':'盗', '盡':'尽', '眞':'真', '硏':'研', '碎':'砕', '礪':'砺', '祕':'秘', '祿':'禄', '禦':'御', '禪':'禅', '禮':'礼', '禰':'祢', '禱':'祷', '稅':'税', '稱':'称', '稻':'稲', '穎':'頴', '穗':'穂', '穩':'穏', '穰':'穣', '竈':'竃', '竊':'窃', '竝':'並', '粹':'粋', '糉':'粽', '絕':'絶', '絲':'糸', '經':'経', '綠':'緑', '緖':'緒', '緣':'縁', '縣':'県', '縱':'縦', '總':'総', '繡':'繍', '繩':'縄', '繪':'絵', '繫':'繋', '繼':'継', '續':'続', '纔':'才', '纖':'繊', '缺':'欠', '罐':'缶', '羣':'群', '聯':'連', '聰':'聡', '聲':'声', '聽':'聴', '肅':'粛', '脣':'唇', '脫':'脱', '腦':'脳', '腳':'脚', '膽':'胆', '臟':'臓', '臺':'台', '與':'与', '舉':'挙', '舊':'旧', '舍':'舎', '艷':'艶', '荔':'茘', '莊':'荘', '莖':'茎', '菸':'煙', '萊':'莱', '萠':'萌', '萬':'万', '蔣':'蒋', '蔥':'葱', '薰':'薫', '藏':'蔵', '藝':'芸', '藥':'薬', '蘆':'芦', '處':'処', '虛':'虚', '號':'号', '螢':'蛍', '蟬':'蝉', '蟲':'虫', '蠟':'蝋', '蠶':'蚕', '蠻':'蛮', '衞':'衛', '裝':'装', '裡':'裏', '襃':'褒', '覺':'覚', '覽':'覧', '觀':'観', '觸':'触', '說':'説', '謠':'謡', '證':'証', '譯':'訳', '譽':'誉', '讀':'読', '變':'変', '讓':'譲', '豐':'豊', '豫':'予', '貓':'猫', '貳':'弐', '賣':'売', '賴':'頼', '贊':'賛', '贗':'贋', '踐':'践', '輕':'軽', '輛':'輌', '轉':'転', '辨':'弁', '辭':'辞', '辯':'弁', '遙':'遥', '遞':'逓', '遲':'遅', '邊':'辺', '郞':'郎', '鄉':'郷', '鄕':'郷', '鄰':'隣', '醉':'酔', '醫':'医', '醬':'醤', '醱':'醗', '釀':'醸', '釋':'釈', '銳':'鋭', '鋪':'舗', '錄':'録', '錢':'銭', '鍊':'錬', '鎭':'鎮', '鐵':'鉄', '鑄':'鋳', '鑛':'鉱', '閱':'閲', '關':'関', '陷':'陥', '隨':'随', '險':'険', '隱':'隠', '雙':'双', '雜':'雑', '雞':'鶏', '霸':'覇', '靈':'霊', '靜':'静', '顏':'顔', '顯':'顕', '飜':'翻', '餘':'余', '餠':'餅', '騷':'騒', '驅':'駈', '驗':'験', '驛':'駅', '髓':'髄', '體':'体', '髮':'髪', '鬥':'鬪', '鬭':'闘', '鱉':'鼈', '鷄':'鶏', '鷗':'鴎', '鹼':'鹸', '鹽':'塩', '麥':'麦', '麪':'麺', '麴':'麹', '麵':'麺', '黃':'黄', '黑':'黒', '默':'黙', '點':'点', '黨':'党', '齊':'斉', '齋':'斎', '齒':'歯', '齡':'齢', '龍':'竜', '龜':'亀'};
+
     function highlight() {
       const text = document.getElementById('input').value;
       if (!text) {
@@ -194,7 +117,7 @@
         return;
       }
 
-      const found = new Map(); // char -> count
+      const found = new Map();
       let html = '';
       let hitCount = 0;
 
@@ -211,23 +134,25 @@
       document.getElementById('result').innerHTML = html;
 
       if (hitCount === 0) {
-        document.getElementById('stats').textContent = '繁体字候補は見つかりませんでした。';
+        document.getElementById('stats').textContent = '日本語と異なる繁体字・旧字体は見つかりませんでした。';
         document.getElementById('foundList').style.display = 'none';
       } else {
         const unique = found.size;
         document.getElementById('stats').innerHTML =
-          `繁体字候補: <strong>${hitCount}</strong> 箇所（種類: ${unique}）`;
+          `検出: <strong>${hitCount}</strong> 箇所（種類: ${unique}）`;
 
-        // sort by count desc, then by codepoint
         const sorted = [...found.entries()].sort((a, b) => {
           if (b[1] !== a[1]) return b[1] - a[1];
           return a[0].codePointAt(0) - b[0].codePointAt(0);
         });
 
         const listEl = document.getElementById('foundChars');
-        listEl.innerHTML = sorted
-          .map(([c, n]) => `<span title="${n}回">${escapeHtml(c)}${n > 1 ? `<small>×${n}</small>` : ''}</span>`)
-          .join('');
+        listEl.innerHTML = sorted.map(([c, n]) => {
+          const jp = JP_EQUIV[c];
+          const jpPart = jp ? `<span class="jp">→${escapeHtml(jp)}</span>` : '';
+          const cnt = n > 1 ? `<small>×${n}</small>` : '';
+          return `<span title="${n}回">${escapeHtml(c)}${jpPart}${cnt}</span>`;
+        }).join('');
         document.getElementById('foundList').style.display = 'block';
       }
     }
@@ -244,7 +169,8 @@
         '北村薰の『小說的方法』を読んだ。\n' +
         '櫻庭一樹の新作も話題だ。\n' +
         '這是一個從中國來的測試文本：國學、會社、實際、經濟發展、圖書館、電影導演。\n' +
-        '日本語では「国学」「会社」「実際」「経済発展」「図書館」「映画監督」と書く。';
+        '日本語では「国学」「会社」「実際」「経済発展」「図書館」「映画監督」と書く。\n' +
+        '書・際・館・電・題・作・小・影・文・樹は日本語と同じ形なのでハイライトされない。';
       highlight();
     }
 
@@ -256,7 +182,6 @@
         .replace(/"/g, '&quot;');
     }
 
-    // Ctrl/Cmd+Enter でハイライト
     document.getElementById('input').addEventListener('keydown', (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
         e.preventDefault();
