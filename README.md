@@ -20,21 +20,6 @@
 
 日本語でも使われる字（例: 國・學・會 など）も含まれるため、ヒットした字は文脈で判断してください。
 
-## デプロイ（GitHub Pages）
-
-```bash
-# 新しいリポジトリを作成して clone したあと
-cp -r trad-highlighter/* your-repo/
-cd your-repo
-git add .
-git commit -m "Add traditional Chinese character highlighter"
-git push
-
-# GitHub → Settings → Pages → Source: Deploy from a branch → main / (root)
-```
-
-数分後に `https://<username>.github.io/<repo-name>/` で公開されます。
-
 ## ファイル構成
 
 ```
