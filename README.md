@@ -45,5 +45,5 @@ README.md
 
 ## ライセンス
 
-- ツール本体: MIT（自由に改変・再利用可）
+- ツール本体: GNU Affero General Public License v3.0
 - 辞書データ: OpenCC の Apache-2.0 に従う
